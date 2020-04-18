@@ -1,12 +1,30 @@
 #include<stdio.h>
-//DESARROLLO DE LA FUNCIONES
-int menuUsuario(char texto[])
-{
-    int opcion;
-    printf("%s", texto);
-    scanf("%d",&opcion);
 
+int menuUsuario(float a , float b){
+    int opcion;
+    printf("MENU DE OPCIONES\n\n");
+    printf("\n1.Ingresar 1re operando(A = %.2f)", a);
+    printf("\n2.Ingresar 2do operando(B = %.2f)", b);
+    printf("\n3.Calcular todas las operaciones");
+    printf("\n4.Informar resultados");
+    printf("\n5.Salir");
+    printf("\n\nDigite su opcion (1 al 5): ");
+    scanf("%d",&opcion);
     return opcion;
+}
+float pedirnum(char msj[]){
+    float num;
+    printf("%s: ", msj);
+    scanf("%f",&num);
+    return num;
+}
+
+void operaciones(float a , float b){
+    printf("a) Calcular la suma (%.2f + %.2f) \n",a,b);
+    printf("b) Calcular la resta (%.2f - %.2f) \n",a,b);
+    printf("c) Calcular la division (%.2f / %.2f) \n",a,b);
+    printf("d) Calcular la multiplicacion (%.2f * %.2f) \n",a,b);
+    printf("e) Calcular el factorial (%.2f) y (%.2f) \n",a,b);
 }
 
 float sumar(float numero_a, float numero_b){
@@ -23,14 +41,8 @@ float restar(float numero_a, float numero_b){
 
 float dividir( float numero_a, float numero_b){
     float r;
+        r = numero_a / numero_b;
 
-    if (numero_a != 0 || numero_b != 0)
-        {
-        r = numero_a / (float)numero_b;
-       }
-        else{
-            r = 0 ;
-            }
     return r;
 }
 float multiplicar(float numero_a, float numero_b){
@@ -38,13 +50,27 @@ float multiplicar(float numero_a, float numero_b){
         r = numero_a * numero_b;
     return r;
 }
-int factorial(float numero)
-{
+
+
+
+int factorial(float numero){
     int fac = 1;
-
-    for(numero ; numero> 0 ; numero--){
-        fac = fac * numero;
-    }
+    int truncar = (int)numero;
+        for( ; truncar > 0 ; truncar--){
+            fac = fac * truncar;
+        }
     return fac;
-
 }
+/*void resultado(float a , float a , float z){
+
+    printf("a) El resultado de %.2f+%.2f es: %.2f \n",a, b,r_sum);
+    printf("b) El resultado de %.2f-%.2f es : %.2f \n",a ,b, r_res);
+    if(b != 0) {
+        printf("c) El resultado de %.2f/%.2f es: %.2f \n",a ,b ,r_divi);
+    }else {
+        printf("c) No es posible dividir por cero\n");
+    }
+    printf("d) El resultado de %.2f*%.2f es: %.2f \n",a ,b ,r_mul);
+
+
+}*/

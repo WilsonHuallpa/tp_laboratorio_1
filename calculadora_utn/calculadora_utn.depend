@@ -1,11 +1,4 @@
 # depslib dependency file v1.0
-1587087341 source:c:\users\wilson\desktop\tp1\calculadora_utn\funciones.c
+1587238139 source:c:\users\wilson\desktop\calculadora_utn\funciones.c
 	<stdio.h>
-
-1587087362 source:c:\users\wilson\desktop\tp1\calculadora_utn\main.c
-	<stdio.h>
-	<stdlib.h>
-	"funciones.h"
-
-1587238139 c:\users\wilson\desktop\tp1\calculadora_utn\funciones.h
 

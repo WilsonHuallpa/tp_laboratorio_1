@@ -41,7 +41,11 @@ int main() {
                             printf("c) No es posible dividir por cero\n");
                         }
                         printf("d) El resultado de %.2f*%.2f es: %.2f \n",a ,b ,r_mul);
-                        printf("e) El factorial de %.0f es: %d y El factorial de %.0f es: %d\n",a ,r_fact1 ,b ,r_fact2);
+                        if (a <= 12 || b <= 12){
+                            printf("e) El factorial de %.0f es: %d y El factorial de %.0f es: %d\n",a ,r_fact1 ,b ,r_fact2);
+                        }else{
+                        printf("e) No es posible hacer el fatorial de un numero mayor a 12 \n");
+                        }
                         system("pause");
                         system("cls");
                     }else{

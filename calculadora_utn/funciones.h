@@ -68,4 +68,3 @@ float dividir(float a, float b);
  */
 int factorial(float n);
 
-void resultado(float, float, float);

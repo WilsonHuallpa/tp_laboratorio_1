@@ -61,16 +61,4 @@ int factorial(float numero){
         }
     return fac;
 }
-/*void resultado(float a , float a , float z){
 
-    printf("a) El resultado de %.2f+%.2f es: %.2f \n",a, b,r_sum);
-    printf("b) El resultado de %.2f-%.2f es : %.2f \n",a ,b, r_res);
-    if(b != 0) {
-        printf("c) El resultado de %.2f/%.2f es: %.2f \n",a ,b ,r_divi);
-    }else {
-        printf("c) No es posible dividir por cero\n");
-    }
-    printf("d) El resultado de %.2f*%.2f es: %.2f \n",a ,b ,r_mul);
-
-
-}*/

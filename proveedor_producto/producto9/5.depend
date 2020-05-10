@@ -1,0 +1,38 @@
+# depslib dependency file v1.0
+1589081232 source:c:\users\wilson\desktop\5\producto9\func_control.c
+	<stdio.h>
+	<string.h>
+	"func_Control.h"
+
+1589068582 c:\users\wilson\desktop\5\producto9\func_control.h
+
+1589081232 source:c:\users\wilson\desktop\5\producto9\main.c
+	<stdio.h>
+	"producto_proveedor.h"
+	"func_Control.h"
+
+1589068582 c:\users\wilson\desktop\5\producto9\producto_proveedor.h
+	"producto.h"
+	"proveedor.h"
+
+1589078905 c:\users\wilson\desktop\5\producto9\producto.h
+
+1589081232 c:\users\wilson\desktop\5\producto9\proveedor.h
+
+1589068582 source:c:\users\wilson\desktop\5\producto9\producto_proveedor.c
+	<stdio.h>
+	"producto_proveedor.h"
+
+1589080488 source:c:\users\wilson\desktop\5\producto9\producto.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"producto.h"
+	"func_Control.h"
+
+1589081232 source:c:\users\wilson\desktop\5\producto9\proveedor.c
+	<stdio.h>
+	<string.h>
+	"proveedor.h"
+	"func_Control.h"
+

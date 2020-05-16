@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1589589115 source:c:\users\wilson\desktop\employee tp2\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayEmployees.h"
+
+1589590562 c:\users\wilson\desktop\employee tp2\arrayemployees.h
+	"Validacio.h"
+
+1589508870 c:\users\wilson\desktop\employee tp2\validacio.h
+
+1589590160 source:c:\users\wilson\desktop\employee tp2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Validacio.h"
+	"ArrayEmployees.h"
+
+1589508877 source:c:\users\wilson\desktop\employee tp2\validacio.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"Validacio.h"
+

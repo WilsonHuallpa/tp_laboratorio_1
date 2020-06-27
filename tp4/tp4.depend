@@ -1,0 +1,69 @@
+# depslib dependency file v1.0
+1593232253 source:c:\users\wilson\desktop\tp4\tp4\controller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+	"Validacio.h"
+	"Controller.h"
+	"menuEmplo.h"
+
+1593231398 c:\users\wilson\desktop\tp4\tp4\linkedlist.h
+
+1592087085 c:\users\wilson\desktop\tp4\tp4\employee.h
+
+1592087563 c:\users\wilson\desktop\tp4\tp4\parser.h
+
+1591848452 c:\users\wilson\desktop\tp4\tp4\validacio.h
+
+1592084429 c:\users\wilson\desktop\tp4\tp4\controller.h
+
+1592088551 c:\users\wilson\desktop\tp4\tp4\menuemplo.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Validacio.h"
+
+1593230132 source:c:\users\wilson\desktop\tp4\tp4\employee.c
+	<stdlib.h>
+	<stdio.h>
+	"Employee.h"
+	<string.h>
+
+1593229273 source:c:\users\wilson\desktop\tp4\tp4\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"menuEmplo.h"
+
+1592088589 source:c:\users\wilson\desktop\tp4\tp4\menuemplo.c
+	"menuEmplo.h"
+
+1592062076 source:c:\users\wilson\desktop\tp4\tp4\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+	"Controller.h"
+	"Validacio.h"
+
+1593229969 source:c:\users\wilson\desktop\tp4\tp4\validacio.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"Validacio.h"
+
+1593230458 source:c:\users\wilson\desktop\tp4\tp4\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+

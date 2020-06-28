@@ -342,16 +342,17 @@ int controller_findEmployeeById(LinkedList* pArrayListEmployee, int index) {
     int auxIndex = -1;
     int len;
     int i;
-    Employee* aux = employee_new() ;
-    len = ll_len(pArrayListEmployee);
-    for(i=0 ; i<len ;  i++){
-        aux = (Employee*)ll_get(pArrayListEmployee,i);
-        if(aux->id == index){
-            auxIndex = i;
-            break;
+    Employee*  aux;
+    if(aux !=  NULL && pArrayListEmployee != NULL){
+        len = ll_len(pArrayListEmployee);
+        for(i=0 ; i<len ;  i++){
+            aux = (Employee*)ll_get(pArrayListEmployee,i);
+            if(aux->id == index){
+                auxIndex = i;
+                break;
+            }
         }
     }
-    employee_delete(aux);
 
 return auxIndex;
 }

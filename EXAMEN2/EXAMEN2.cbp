@@ -46,6 +46,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="parser.h" />
+		<Unit filename="pilotos.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="pilotos.h" />
 		<Unit filename="vuelos.c">
 			<Option compilerVar="CC" />

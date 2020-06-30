@@ -12,15 +12,19 @@ int main()
     LinkedList* listapiloto = ll_newLinkedList();
     LinkedList* listaPortugal;
     LinkedList* listamenosAlex;
+    LinkedList* listaFiltrada;
 
     int opcion;
     int quantity_Vuelo;
+    int quantity_piloto;
     int tPasajero;
+    int sort;
+
     if (listaVuelos == NULL || listapiloto == NULL) {
-        printf("no se encontro espacio en memoria.");
+        printf("No se encontro espacio en memoria.");
         exit(EXIT_FAILURE);
     }
-    harcodearPiloto(listapiloto);
+
     do{
         system("cls");
         printf(" +===================================================================================+\n");
@@ -33,24 +37,33 @@ int main()
         printf(" |  [5] Filtrar vuelos cortos (cuya duracion sea inferior 3 horas).                  |\n");
         printf(" |  [6] Listar vuelos a Portugal.                                                    |\n");
         printf(" |  [7] Filtrar a Alex Lifeson .                                                     |\n");
-        printf(" |  [8] Salir del programa.                                                          |\n");
+        printf(" |  [8] Filtrar la lista de piloto por nombre.                                       |\n");
+        printf(" |  [9] Ordenar lista vuelos.                                                        |\n");
+        printf(" |  [10] Salir del programa.                                                         |\n");
         printf(" +-----------------------------------------------------------------------------------+\n\n");
         printf("\n\nIngrese una opcion : ");
         scanf("%d",&opcion);
 
         switch(opcion){
             case 1:
-                quantity_Vuelo = controller_loadFromText("Vuelos.csv",listaVuelos);
-                if(quantity_Vuelo > 0){
+                system("cls");
+                printf("Archivo Disponible [Vuelos.csv] [pilotos.csv] \n\n");
+
+                quantity_Vuelo = controller_huallpa_loadFromText("Vuelos.csv",listaVuelos);
+                quantity_piloto = controller_huallpa_loadpiloto("pilotos.csv",listapiloto);
+
+                if(quantity_Vuelo > 0 && quantity_piloto > 0){
                     printf("se cargaron %d vuelos desde el archivo de texto.\n",quantity_Vuelo);
+                    printf("se cargaron %d pilotos desde el archivo de texto.\n\n",quantity_piloto);
+
                     system("pause");
                 }else{
-                    printf("ERROR... Talves ya cargo el archivo\n");
+                    printf("ERROR...\n");
                     system("pause");
                 }
             break;
             case 2:
-                controller_imprimirVuelos(listaVuelos,listapiloto);
+                controller_huallpa_imprimirVuelos(listaVuelos,listapiloto);
             break;
             case 3:
                 tPasajero = ll_count(listaVuelos,contarpasajeros );
@@ -71,8 +84,7 @@ int main()
                 }
             break;
             case 5:
-
-                quantity_Vuelo = controller_saveAsText("vuelosCorto.csv",listaVuelos);
+                quantity_Vuelo = controller_huallpa_saveAsText("vuelosCorto.csv",listaVuelos);
                 if(quantity_Vuelo > 0){
                     printf("\nexito");
                     system("pause");
@@ -81,29 +93,46 @@ int main()
                 }
             break;
             case 6:
-                listaPortugal = controller_listaVuelosPortugal(listaVuelos);
+                listaPortugal = controller_huallpa_listaVuelosPortugal(listaVuelos);
                 if(listaPortugal != NULL){
-                   inprimirVuelos(listaPortugal);
+                   controller_huallpa_inprimirVuelos(listaPortugal);
                    system("pause");
                 }
 
             break;
             case 7:
-                listamenosAlex = controller_listaVuelosmenosAlex(listaVuelos);
+                listamenosAlex = controller_huallpa_listaVuelosmenosAlex(listaVuelos);
                 if(listamenosAlex != NULL){
-                   inprimirVuelos(listamenosAlex);
+                   controller_huallpa_inprimirVuelos(listamenosAlex);
                    system("pause");
                 }
             break;
             case 8:
+                listaFiltrada = controller_huallpa_filtrarPorNombre(listapiloto);
+                if(listaFiltrada != NULL){
+                     piloto_imprimirPilotos(listaFiltrada);
+                     system("pause");
+                }
 
+            break;
+            case 9:
+                sort = controller_huallpa_sortvuelos(listaVuelos);
+                if(sort == 1){
+                    controller_huallpa_inprimirVuelos(listaVuelos);
+                    system("pause");
+                }
+            break;
+            case 10:
+                 printf("GRACIAS POR USAR EL PROGRAMA...\n");
+                 system("pause");
             break;
             default:
                 printf("Opcion invalida\n");
                 system("pause");
             break;
+
         }
-    }while(opcion != 8);
+    }while(opcion != 10);
 
     return 0;
 }

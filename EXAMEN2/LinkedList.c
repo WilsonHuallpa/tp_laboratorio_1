@@ -266,9 +266,6 @@ int ll_clear(LinkedList* this)
         for (i=0; i<len ; i++) {
             ll_remove(this,i);
        }
-        /*this->pFirstNode = NULL;
-        this->size = 0;*/
-
         returnAux = 0;
     }
 
@@ -596,6 +593,7 @@ int ll_count(LinkedList* listuno, int (*fn)(void* element)){
         for (i=0 ; i<ll_len(listuno) ; i++ ) {
              elemento = ll_get(listuno,i);
              if(elemento != NULL){
+
                acumulador = acumulador + (fn(elemento));
              }
         }
@@ -603,3 +601,22 @@ int ll_count(LinkedList* listuno, int (*fn)(void* element)){
     return acumulador;
 }
 
+
+LinkedList* ll_filter_parametro(LinkedList* lista, int (*fn)(void* element, char* name), char* cadena){
+
+    LinkedList* nuevalista = NULL;
+    void* elemento;
+    int i;
+    if ( lista != NULL && fn != NULL){
+        nuevalista = ll_newLinkedList();
+        if ( nuevalista != NULL) {
+            for(i=0 ; i < ll_len(lista) ; i++){
+                elemento = ll_get(lista,i);
+                if(elemento != NULL && ((*fn)(elemento,cadena))== 1) {
+                    ll_add(nuevalista,elemento);
+                }
+            }
+        }
+    }
+ return nuevalista;
+}

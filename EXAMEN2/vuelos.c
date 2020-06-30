@@ -22,7 +22,7 @@ eVuelo* vuelo_newParametros(int* p_idVuelo, int* p_idAvion ,int* p_idPiloto, cha
         vuelo_setHoradespegue(auxVuelo, *p_horaDpg) == 1 &&
         vuelo_setHorallegada(auxVuelo, *p_horaLlegd) == 1)) {
   } else {
-    //employee_delete(auxVuelo);
+
     auxVuelo = NULL;
   }
   return auxVuelo;
@@ -177,22 +177,26 @@ int vuelo_getHorallegada(eVuelo* unVuelo, int* p_horaLlegd) {
 
 int contarpasajeros(void* element){
     int cantidad = 0;
-    eVuelo* unVuelos = (eVuelo*)element;
-    if(unVuelos != NULL){
+    eVuelo* unVuelos;
+    if(element != NULL){
+        unVuelos = (eVuelo*)element;
         if(vuelo_getCantpsj(unVuelos,&cantidad) != 1){
           cantidad = 0;
         }
     }
  return cantidad;
 }
-
 int contarpasajerosIrlanda(void* element){
+
     int cantidad = 0;
-    eVuelo* unVuelos = (eVuelo*)element;
-    if(unVuelos != NULL && (strcmp(unVuelos->destino,"Irlanda") == 0)){
-        if(vuelo_getCantpsj(unVuelos,&cantidad) != 1){
-          cantidad = 0;
-        }
+    eVuelo* unVuelos;
+    if(element != NULL ) {
+        unVuelos = (eVuelo*)element;
+        if(strcasecmp(unVuelos->destino,"Irlanda") == 0) {
+            if(vuelo_getCantpsj(unVuelos,&cantidad) != 1){
+              cantidad = 0;
+            }
+       }
     }
  return cantidad;
 }
@@ -202,64 +206,97 @@ int filtrarVueloCorto(void* element) {
     int i;
     int j;
     int x;
-    eVuelo* unVuelo =(eVuelo*) element;
-    if (unVuelo != NULL){
-        i = unVuelo->horaDespegue;
-        j = unVuelo->horaLlegada;
-        x = j - i;
-        if (x < 3){
-         ret_value = 1;
+    eVuelo* unVuelo;
+    if (element != NULL) {
+        unVuelo =(eVuelo*)element;
+        if(vuelo_getHoradespegue(unVuelo,&i) == 1 &&
+           vuelo_getHorallegada(unVuelo,&j) == 1) {
+                x = j - i;
+                if (x < 3) {
+                    ret_value = 1;
+                }
         }
     }
     return ret_value;
 }
-
 int filtrarVueloPortugal(void* element){
 
     int ret_value = 0;
-    eVuelo* unVuelo = (eVuelo*)element;
-    if(unVuelo != NULL && (strcmp(unVuelo->destino,"Portugal") == 0)){
-        ret_value = 1;
+    eVuelo* unVuelo;
+    if(element != NULL){
+        unVuelo = (eVuelo*)element;
+        if(strcmp(unVuelo->destino,"Portugal") == 0){
+            ret_value = 1;
+        }
     }
    return ret_value;
 }
-
 int filtrarVuelomenosAlex(void* element){
 
     int ret_value = 0;
 
-    eVuelo* unVuelo = (eVuelo*)element;
-    if(unVuelo != NULL && (unVuelo->idPiloto != 1 )){
-        ret_value = 1;
+    eVuelo* unVuelo;
+    if(element != NULL ){
+        unVuelo = (eVuelo*)element;
+        if(unVuelo->idPiloto != 1 ){
+            ret_value = 1;
+        }
     }
    return ret_value;
 }
 
+void vuelo_delete(eVuelo* unVuelo){
 
+  if(unVuelo != NULL){
+    free(unVuelo);
+  }
+}
+int vuelo_CompareByIdVuelo(void* e1, void* e2) {
 
-/*
-int employee_CompareByName(void* e1, void* e2){
     int ret_value;
 
-    Employee* emp1 = (Employee*)e1;
-    Employee* emp2 = (Employee*)e2;
-    if(emp1 != NULL && emp2 != NULL){
+    eVuelo* vuelo1 = (eVuelo*)e1;
+    eVuelo* vuelo2 = (eVuelo*)e2;
 
-       ret_value = strcmp(emp1->nombre,emp2->nombre);
+    if(vuelo1 != NULL && vuelo2 != NULL) {
+        if(vuelo1->idVuelo > vuelo2->idVuelo) {
+            ret_value = 1;
+        }else if(vuelo1->idVuelo < vuelo2->idVuelo) {
+                ret_value = -1;
+            }else {
+                ret_value = 0;
+            }
     }
     return ret_value;
 }
-
-int employee_CompareById(void* e1, void* e2) {
+int vuelo_CompareByIdAvion(void* e1, void* e2) {
     int ret_value;
-    Employee* emp1 = (Employee*)e1;
-    Employee* emp2 = (Employee*)e2;
+    eVuelo* vuelo1 = (eVuelo*)e1;
+    eVuelo* vuelo2 = (eVuelo*)e2;
 
-    if(emp1 != NULL && emp2 != NULL) {
-        if(emp1->id > emp2->id) {
+    if(vuelo1 != NULL && vuelo2 != NULL) {
+        if(vuelo1->idAvion > vuelo2->idAvion) {
             ret_value = 1;
         }else {
-            if(emp1->id  < emp2->id) {
+            if(vuelo1->idAvion < vuelo2->idAvion) {
+                ret_value = -1;
+            }else {
+                ret_value = 0;
+            }
+        }
+    }
+    return ret_value;
+}
+int vuelo_CompareByIdPiloto(void* e1, void* e2) {
+    int ret_value;
+    eVuelo* vuelo1 = (eVuelo*)e1;
+    eVuelo* vuelo2 = (eVuelo*)e2;
+
+    if (vuelo1 != NULL && vuelo2 != NULL) {
+        if(vuelo1->idPiloto > vuelo2->idPiloto) {
+            ret_value = 1;
+        }else {
+            if(vuelo1->idPiloto < vuelo2->idPiloto) {
                 ret_value = -1;
             }else {
                 ret_value = 0;
@@ -269,31 +306,90 @@ int employee_CompareById(void* e1, void* e2) {
     return ret_value;
 }
 
-void employee_delete(Employee* this){
+int vuelo_CompareByfecha(void* e1, void* e2){
+    int ret_value;
 
-    if(this != NULL){
-        free(this);
+    eVuelo* vuelo1;
+    eVuelo* vuelo2;
+    if(e1 != NULL && e2 != NULL){
+        vuelo1 = (eVuelo*)e1;
+        vuelo2 = (eVuelo*)e2;
+
+       ret_value = strcmp(vuelo1->fecha,vuelo2->fecha);
     }
+    return ret_value;
 }
-int employee_print(Employee* this){
+int vuelo_CompareByDestino(void* e1, void* e2){
+    int ret_value;
 
-    int ret_Value = -1;
-    int id_empl;
-    char name[100];
-    int workHours;
-    int salary;
-    if(this != NULL){
-       if(employee_getId(this,&id_empl)&& employee_getName(this,name)
-          && employee_getHorasTrabajadas(this, &workHours)
-          && employee_getSueldo(this,&salary)){
-                printf("+=======+======================+=======+============+\n");
-                printf("|   ID  |        NOMBRE        | HORAS |   SALARIO  |\n");
-                printf("+=======+======================+=======+============+\n");
-                printf("| %5d | %20s | %5d | %10d |\n",id_empl,name,workHours,salary);
-                printf("+-------+----------------------+-------+------------+\n");
-                ret_Value = 1;
-          }
+    eVuelo* vuelo1;
+    eVuelo* vuelo2;
+    if(e1!= NULL && e2 != NULL) {
+        vuelo1 = (eVuelo*)e1;
+        vuelo2 = (eVuelo*)e2;
+        ret_value = strcmp(vuelo1->destino,vuelo2->destino);
     }
-return ret_Value;
-}*/
+    return ret_value;
+}
+
+int vuelo_ComparCantPsj(void* e1, void* e2) {
+
+    int ret_value;
+
+    eVuelo* vuelo1;
+    eVuelo* vuelo2;
+
+    if(e1 != NULL && e2 != NULL) {
+        vuelo1 = (eVuelo*)e1;
+        vuelo2 = (eVuelo*)e2;
+        if(vuelo1->cantPasajeros > vuelo2->cantPasajeros) {
+            ret_value = 1;
+        }else if(vuelo1->cantPasajeros < vuelo2->cantPasajeros) {
+                ret_value = -1;
+            }else {
+                ret_value = 0;
+            }
+    }
+    return ret_value;
+}
+int vuelo_ComparHdespegue(void* e1, void* e2) {
+
+    int ret_value;
+
+    eVuelo* vuelo1;
+    eVuelo* vuelo2;
+
+    if(e1 != NULL && e2 != NULL) {
+        vuelo1 = (eVuelo*)e1;
+        vuelo2 = (eVuelo*)e2;
+        if(vuelo1->horaDespegue > vuelo2->horaDespegue) {
+            ret_value = 1;
+        }else if(vuelo1->horaDespegue < vuelo2->horaDespegue) {
+                ret_value = -1;
+            }else {
+                ret_value = 0;
+            }
+    }
+    return ret_value;
+}
+int vuelo_ComparHllegada(void* e1, void* e2) {
+
+    int ret_value;
+
+    eVuelo* vuelo1;
+    eVuelo* vuelo2;
+
+    if(e1 != NULL && e2 != NULL) {
+        vuelo1 = (eVuelo*)e1;
+        vuelo2 = (eVuelo*)e2;
+        if(vuelo1->horaLlegada > vuelo2->horaLlegada) {
+            ret_value = 1;
+        }else if(vuelo1->horaLlegada < vuelo2->horaLlegada) {
+                ret_value = -1;
+            }else {
+                ret_value = 0;
+            }
+    }
+    return ret_value;
+}
 

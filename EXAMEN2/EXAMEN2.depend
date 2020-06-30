@@ -1,0 +1,58 @@
+# depslib dependency file v1.0
+1593519799 source:c:\users\wilson\desktop\examen\examen2\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1593519792 c:\users\wilson\desktop\examen\examen2\linkedlist.h
+
+1593520603 source:c:\users\wilson\desktop\examen\examen2\contoller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"contoller.h"
+	"parser.h"
+	"pilotos.h"
+	"vuelos.h"
+
+1593520940 c:\users\wilson\desktop\examen\examen2\contoller.h
+
+1593521808 source:c:\users\wilson\desktop\examen\examen2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"contoller.h"
+	"vuelos.h"
+	"pilotos.h"
+
+1593479304 c:\users\wilson\desktop\examen\examen2\vuelos.h
+
+1593521194 c:\users\wilson\desktop\examen\examen2\pilotos.h
+
+1593519178 c:\users\wilson\desktop\examen\examen2\parser.h
+
+1593521377 source:c:\users\wilson\desktop\examen\examen2\vuelos.c
+	<stdlib.h>
+	<stdio.h>
+	"vuelos.h"
+	<string.h>
+
+1593520741 source:c:\users\wilson\desktop\examen\examen2\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"vuelos.h"
+	"pilotos.h"
+	"contoller.h"
+	"parser.h"
+
+1593521194 source:c:\users\wilson\desktop\examen\examen2\pilotos.c
+	<stdlib.h>
+	<stdio.h>
+	"LinkedList.h"
+	"pilotos.h"
+	<string.h>
+

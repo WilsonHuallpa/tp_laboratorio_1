@@ -3,6 +3,7 @@
 #include <string.h>
 #include "LinkedList.h"
 #include "vuelos.h"
+#include "pilotos.h"
 #include "contoller.h"
 #include "parser.h"
 
@@ -53,3 +54,37 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayVuelos){
     }
     return ret_value;
 }
+
+int parser_piloto(FILE* pFile , LinkedList* pArrayPiloto){
+
+
+
+    int idPiloto;
+    char nombrep[35];
+    char buffer[2][35];
+    int ret_value = 0;
+    ePiloto* auxpilo;
+
+    if(pFile != NULL && pArrayPiloto != NULL && ll_clear(pArrayPiloto) == 0 ){
+        fscanf(pFile,"%[^,],%[^\n]\n",buffer[0],buffer[1]);
+        while(!feof(pFile)){
+            if(feof(pFile)){
+                break;
+            }
+            fscanf(pFile,"%[^,],%[^\n]\n",buffer[0],buffer[1]);
+
+            idPiloto = atoi(buffer[0]);
+            strcpy(nombrep,buffer[1]);
+
+            auxpilo = piloto_newParametros(&idPiloto,nombrep);
+
+            if(auxpilo != NULL && ll_add(pArrayPiloto,(ePiloto*)auxpilo) == 0){
+                ret_value++;
+            }
+
+        }
+
+    }
+    return ret_value;
+}
+

@@ -18,6 +18,9 @@ eVuelo* vuelo_new(void);
 eVuelo* vuelo_newParametros(int* p_idVuelo, int* p_idAvion ,int* p_idPiloto, char* p_fecha,
                              char* p_Destino, int* p_cantpsj,int* p_horaDpg, int* p_horaLlegd);
 
+
+void vuelo_delete(eVuelo* unVuelo);
+
 int vuelo_setIdVuelo(eVuelo* unVuelo ,int p_idVuelo);
 int vuelo_getIdVuelo(eVuelo* unVuelo ,int* p_idVuelo);
 
@@ -45,9 +48,20 @@ int vuelo_getHorallegada(eVuelo* unVuelo, int* p_horaLlegd);
 
 int contarpasajeros(void* element);
 int contarpasajerosIrlanda(void* element);
+
 int filtrarVueloCorto(void* element);
 int filtrarVueloPortugal(void* element);
 int filtrarVuelomenosAlex(void* element);
 
+int vuelo_CompareByIdVuelo(void* e1, void* e2);
+int vuelo_CompareByIdAvion(void* e1, void* e2);
+int vuelo_CompareByIdPiloto(void* e1, void* e2);
+
+int vuelo_CompareByfecha(void* e1, void* e2);
+int vuelo_CompareByDestino(void* e1, void* e2);
+
+int vuelo_ComparCantPsj(void* e1, void* e2);
+int vuelo_ComparHdespegue(void* e1, void* e2);
+int vuelo_ComparHllegada(void* e1, void* e2);
 
 #endif // __VUELOS
